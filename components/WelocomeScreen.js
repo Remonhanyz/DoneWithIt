@@ -48,14 +48,17 @@ const styles = StyleSheet.create({
 	},
 	bottomForm: {
 		flex: 1,
+		flexDirection: "row",
 		// justifyContent: "center",
-		alignItems: "center",
-		justifyContent: "flex-end",
-		width: 200
+		alignItems: "flex-end"
+		// justifyContent: "flex-end"
 	},
 	red: {
+		flex: 1,
+		// flexDirection: "row",
+		// justifyContent: "flex-end",
 		backgroundColor: "red",
-		width: 200
+		height: 100
 	}
 });
 export default WelocomeScreen;
