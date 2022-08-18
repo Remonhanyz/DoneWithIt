@@ -1,0 +1,47 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Attach to packager",
+			"request": "attach",
+			"type": "reactnative",
+			"cwd": "${workspaceFolder}",
+			"port": 19000
+		},
+
+		{
+			"name": "Debug in Exponent",
+			"request": "launch",
+			"type": "reactnative",
+			"cwd": "${workspaceFolder}",
+			"platform": "exponent",
+			"expoHostType": "local"
+		},
+		{
+			"name": "Debug Windows",
+			"request": "launch",
+			"type": "reactnative",
+			"cwd": "${workspaceFolder}",
+			"platform": "windows"
+		},
+		{
+			"name": "Debug Android",
+			"program": "${workspaceRoot}/.vscode/launchReactNative.js",
+			"type": "reactnative",
+			"request": "launch",
+			"platform": "android",
+			"sourceMaps": true,
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"name": "Debug iOS",
+			"program": "${workspaceRoot}/.vscode/launchReactNative.js",
+			"type": "reactnative",
+			"request": "launch",
+			"platform": "ios",
+			"target": "iPhone 5s",
+			"sourceMaps": true,
+			"cwd": "${workspaceFolder}"
+		}
+	]
+}
