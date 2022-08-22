@@ -24,7 +24,11 @@
 // } from "react-native-gesture-handler";
 // import {SafeAreaView} from "react-native-safe-area-context";
 import { View, Text } from "react-native";
-import WelocomeScreen from "./components/WelocomeScreen";
+import WelcomeScreen from "./app/screens/WelcomeScreen";
+import ImageScreen from "./app/screens/ImageScreen";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
+import ListingsScreen from "./app/screens/ListingsScreen";
+import MyAccountScreen from "./app/screens/MyAccountScreen";
 
 export default function App() {
 	// const handlePress = () => console.log("text clicked");
@@ -37,7 +41,10 @@ export default function App() {
 	// 	setHeight(h);
 	// });
 	return (
-			<WelocomeScreen />
+		// <WelcomeScreen />
+		// <MyAccountScreen />
+		// <ListingDetailsScreen />
+		<ListingsScreen />
 
 		// <SafeAreaView style={[styles.container]}>
 		// 	<Text numberOfLines={1} onPress={() => handlePress()}>
