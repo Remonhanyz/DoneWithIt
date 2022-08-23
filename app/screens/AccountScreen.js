@@ -5,6 +5,7 @@ import Icon from "../components/Icon";
 import ListItem from "../components/ListItem";
 import colors from "../config/colors";
 import ListItemSeparator from "../components/ListItemSeparator";
+import routes from "../navigation/routes";
 
 const menuItems = [
 	{
@@ -19,13 +20,14 @@ const menuItems = [
 		icon: {
 			name: "email",
 			backgroundColor: colors.secondary
-		}
+		},
+		targetScreen: routes.MESSAGES
 	}
 ];
 
-const MyAccountScreen = () => {
+const AccountScreen = ({navigation}) => {
 	return (
-		<SafeAreaView style={styles.screen}>
+		<View style={styles.screen}>
 			<View style={styles.container}>
 				<ListItem
 					title="Mosh Hamedani"
@@ -48,6 +50,7 @@ const MyAccountScreen = () => {
 									iconColor="white"
 								/>
 							}
+							onPress={() => navigation.navigate(item.targetScreen)}
 						/>
 					)}
 					ItemSeparatorComponent={ListItemSeparator}
@@ -56,26 +59,21 @@ const MyAccountScreen = () => {
 			<View style={styles.container}>
 				<ListItem
 					title="Log Out"
-					IconComponent={
-						<Icon
-							name="logout"
-							backgroundColor='#ffe66d'
-						/>
-					}
+					IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
 				/>
 			</View>
-		</SafeAreaView>
+		</View>
 	);
 };
 
-export default MyAccountScreen;
+export default AccountScreen;
 
 const styles = StyleSheet.create({
 	container: {
 		marginVertical: 20
-    },
-    screen: {
-        backgroundColor: colors.light,
-        flex: 1
-    }
+	},
+	screen: {
+		backgroundColor: colors.light,
+		flex: 1
+	}
 });

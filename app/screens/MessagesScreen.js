@@ -31,7 +31,7 @@ export default function MessagesScreen() {
 	};
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<View style={styles.container}>
 			<View style={styles.container}>
 				<FlatList
 					data={messages}
@@ -63,7 +63,7 @@ export default function MessagesScreen() {
 					}}
 				/>
 			</View>
-		</SafeAreaView>
+		</View>
 	);
 }
 

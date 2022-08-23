@@ -1,18 +1,20 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import colors from '../config/colors';
 import AppText from './AppText';
 
-const Card = ({title, subTitle, image}) => {
-  return (
-		<View style={styles.card}>
-			<Image source={image} style={styles.image} />
-			<View style={styles.detailContainer}>
-				<AppText style={styles.title}>{title}</AppText>
-				<AppText style={styles.subTitle}>{subTitle}</AppText>
+const Card = ({title, subTitle, image, onPress}) => {
+	return (
+		<TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+			<View style={styles.card}>
+				<Image source={image} style={styles.image} />
+				<View style={styles.detailContainer}>
+					<AppText style={styles.title}>{title}</AppText>
+					<AppText style={styles.subTitle}>{subTitle}</AppText>
+				</View>
 			</View>
-		</View>
-  );
+		</TouchableOpacity>
+	);
 }
 
 export default Card

@@ -7,8 +7,9 @@ import {
 import {SafeAreaView} from "react-native-safe-area-context";
 import colors from "../config/colors";
 import AppButton from "../components/AppButton";
+import routes from "../navigation/routes";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
 	return (
 		<ImageBackground
 			blurRadius={10}
@@ -24,11 +25,14 @@ const WelcomeScreen = () => {
 				<Text style={styles.tagLine}>Sell What You Don't Need</Text>
 				<View style={styles.bottomForm}>
 					<View style={styles.buttonsContainer}>
-						<AppButton title="Login" onPress={() => {}} />
+						<AppButton
+							title="Login"
+							onPress={() => navigation.navigate(routes.LOGIN)}
+						/>
 						<AppButton
 							title="Register"
-							onPress={() => {}}
 							bgColor="secondary"
+							onPress={() => navigation.navigate(routes.REGISTER)}
 						/>
 					</View>
 				</View>

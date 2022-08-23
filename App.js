@@ -25,10 +25,15 @@
 // import {SafeAreaView} from "react-native-safe-area-context";
 import { View, Text } from "react-native";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
-import ImageScreen from "./app/screens/ImageScreen";
-import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
+import AccountScreen from "./app/screens/AccountScreen";
+import MessagesScreen from "./app/screens/MessagesScreen";
 import ListingsScreen from "./app/screens/ListingsScreen";
-import MyAccountScreen from "./app/screens/MyAccountScreen";
+import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
+import ImageScreen from "./app/screens/ImageScreen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
+import {NavigationContainer} from '@react-navigation/native'
+import navigationTheme from './app/navigation/navigationTheme'
+import AppNavigator from "./app/navigation/AppNavigator";
 
 export default function App() {
 	// const handlePress = () => console.log("text clicked");
@@ -41,10 +46,16 @@ export default function App() {
 	// 	setHeight(h);
 	// });
 	return (
+		<NavigationContainer theme={navigationTheme}>
+			{/* <AuthNavigator /> */}
+			<AppNavigator />
+		</NavigationContainer>
 		// <WelcomeScreen />
 		// <MyAccountScreen />
 		// <ListingDetailsScreen />
-		<ListingsScreen />
+		// <ListingsScreen />
+		// <ImageScreen />
+		// <MessagesScreen />
 
 		// <SafeAreaView style={[styles.container]}>
 		// 	<Text numberOfLines={1} onPress={() => handlePress()}>
@@ -64,13 +75,6 @@ export default function App() {
 		// 		<Text style={{height: landscape ? "30%" : "50%"}}>
 		// 			rereerrerwwerwr
 		// 		</Text>
-		// 		<Text>rereerrerwwerwr</Text>
-		// 		<Text>rereerrerwwerwr</Text>
-		// 		<Text>rereerrerwwerwr</Text>
-		// 		<Text>rereerrerwwerwr</Text>
-		// 		<Text>rereerrerwwerwr</Text>
-		// 		<Text>rereerrerwwerwr</Text>
-		// 		<Text>rereerrerwwerwr</Text>
 		// 		<Image
 		// 			// blurRadius={5}
 		// 			resizeMod="cover"

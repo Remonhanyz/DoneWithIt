@@ -3,7 +3,7 @@ import React from "react";
 import {SafeAreaView} from "react-native-safe-area-context";
 import Card from "../components/Card";
 import colors from "../config/colors";
-
+import routes from "../navigation/routes";
 const listings = [
 	{
 		id: 1,
@@ -18,21 +18,27 @@ const listings = [
 		image: require("../assets/couch.jpg")
 	}
 ];
-const ListingScreen = () => {
+
+const ListingsScreen = ({navigation}) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<FlatList
 				data={listings}
 				keyExtractor={(listing) => listing.id.toString()}
 				renderItem={({item}) => (
-					<Card title={item.title} subTitle={"$ " + item.price} image={item.image} />
+					<Card
+						title={item.title}
+						subTitle={"$ " + item.price}
+						image={item.image}
+						onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+					/>
 				)}
 			/>
 		</SafeAreaView>
 	);
 };
 
-export default ListingScreen;
+export default ListingsScreen;
 
 const styles = StyleSheet.create({
 	container: {
