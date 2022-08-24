@@ -47,8 +47,8 @@ export default function App() {
 	// });
 	return (
 		<NavigationContainer theme={navigationTheme}>
-			{/* <AuthNavigator /> */}
-			<AppNavigator />
+			<AuthNavigator />
+			{/* <AppNavigator /> */}
 		</NavigationContainer>
 		// <WelcomeScreen />
 		// <MyAccountScreen />

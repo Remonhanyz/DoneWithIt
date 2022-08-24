@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
 		width: "100%",
 		padding: 15,
 		marginVertical: 10,
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingRight: 45
 	},
 	icon: {
 		marginRight: 10
