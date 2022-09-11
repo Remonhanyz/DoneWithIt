@@ -11,13 +11,17 @@ import colors from "../config/colors";
 const AppButton = ({
 	title,
 	onPress,
+	borderRadius= 25,
 	bgColor = "primary",
 	textColor = "white"
 }) => {
 	return (
 		<TouchableOpacity
 			activeOpacity={0.8}
-			style={[styles.button, {backgroundColor: colors[bgColor]}]}
+			style={[
+				styles.button,
+				{backgroundColor: colors[bgColor], borderRadius: borderRadius}
+			]}
 			onPress={onPress}
 		>
 			<Text style={[styles.text, {color: colors[textColor]}]}>{title}</Text>
@@ -27,7 +31,6 @@ const AppButton = ({
 
 const styles = StyleSheet.create({
 	button: {
-		borderRadius: 25,
 		justifyContent: "center",
 		alignItems: "center",
 		padding: 15,
