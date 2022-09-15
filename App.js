@@ -34,8 +34,21 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import {NavigationContainer} from '@react-navigation/native'
 import navigationTheme from './app/navigation/navigationTheme'
 import AppNavigator from "./app/navigation/AppNavigator";
+import { useEffect } from "react";
+import * as ImagePicker from "expo-image-picker";
+// import * as Permissions from "expo-Permissions";
 
 export default function App() {
+	const requestPermission = async () => {
+		// const result = await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
+		const result = await ImagePicker.requestMediaLibraryPermissionsAsync()
+		if (!result.granted) {
+			alert('You need to enable permission to access the library.')
+		}
+	}
+	useEffect(() => {
+		requestPermission()
+	}, [])
 	// const handlePress = () => console.log("text clicked");
 	// const [width, setWidth] = useState(0);
 	// const [height, setHeight] = useState(0);
