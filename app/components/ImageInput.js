@@ -1,30 +1,34 @@
+import React, {useEffect} from "react";
 import {
-	Alert,
-	Image,
+	View,
 	StyleSheet,
-	Text,
+	Image,
 	TouchableWithoutFeedback,
-	View
+	Alert
 } from "react-native";
-import React, { useEffect } from "react";
-import colors from "../config/colors";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 
-const ImageInput = ({imageUri, onChangeImage}) => {
-	const handlePress = async () => {
+import colors from "../config/colors";
+
+function ImageInput({imageUri, onChangeImage}) {
+	useEffect(() => {
+		requestPermission();
+	}, []);
+
+	const requestPermission = async () => {
+		const {granted} = await ImagePicker.requestMediaLibraryPermissionsAsync();
+		if (!granted)
+			alert("You need to enable permission to access the library.");
+	};
+
+	const handlePress = () => {
 		if (!imageUri) selectImage();
 		else
 			Alert.alert("Delete", "Are you sure you want to delete this image?", [
 				{text: "Yes", onPress: () => onChangeImage(null)},
 				{text: "No"}
 			]);
-	};
-	const requestPermission = async () => {
-		const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
-		if (!result.granted) {
-			alert("You need to enable permission to access the library.");
-		}
 	};
 
 	const selectImage = async () => {
@@ -33,54 +37,45 @@ const ImageInput = ({imageUri, onChangeImage}) => {
 				mediaTypes: ImagePicker.MediaTypeOptions.Images,
 				quality: 0.5
 			});
-			console.log('resulr', result['uri'])
-			if (!result.cancelled) {
-				onChangeImage(result.uri);
-			}
+			if (!result.cancelled) onChangeImage(result.uri);
 		} catch (error) {
 			console.log("Error reading an image", error);
 		}
 	};
-	useEffect(() => {
-		requestPermission();
-	}, []);
 
 	return (
 		<TouchableWithoutFeedback onPress={handlePress}>
 			<View style={styles.container}>
 				{!imageUri && (
 					<MaterialCommunityIcons
+						color={colors.medium}
 						name="camera"
 						size={40}
-						color={colors.medium}
 					/>
 				)}
-				{imageUri["uri"]}
 				{imageUri && (
-					<Image
-						source={{uri: `${imageUri["uri"]}`}}
-						style={styles.image}
-					/>
+					<Image source={{uri: imageUri}} style={styles.image} />
 				)}
 			</View>
 		</TouchableWithoutFeedback>
 	);
-};
-
-export default ImageInput;
+}
 
 const styles = StyleSheet.create({
 	container: {
+		alignItems: "center",
 		backgroundColor: colors.light,
 		borderRadius: 15,
-		justifyContent: "center",
-		alignItems: "center",
 		height: 100,
-		width: 100,
-		overflow: "hidden"
+		justifyContent: "center",
+		marginVertical: 10,
+		overflow: "hidden",
+		width: 100
 	},
 	image: {
-		width: "100%",
-		height: "100%"
+		height: "100%",
+		width: "100%"
 	}
 });
+
+export default ImageInput;

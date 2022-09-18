@@ -9,9 +9,7 @@ const FormImagePicker = ({name}) => {
 
 
 	const handleAdd = (uri) => {
-		console.log('1')
 		setFieldValue(name, [ ...values[ name ], uri ]);
-		console.log("2");
 		
 	};
 

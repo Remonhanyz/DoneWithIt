@@ -14,13 +14,14 @@ import {SafeAreaView} from "react-native-safe-area-context";
 import AppButton from "./AppButton";
 
 const AppPicker = ({
-	icon,numOfColumns=1,
+	icon,
+	numOfColumns = 1,
 	placeholder,
 	onSelectItem,
 	selectedItem,
 	items,
 	PickerItemComponent = PickerItem,
-	width ='100%'
+	width = "100%"
 }) => {
 	const [modalVisible, setModalVisible] = useState(false);
 	return (
