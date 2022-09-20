@@ -3,11 +3,11 @@ import React from 'react'
 import colors from '../config/colors';
 import AppText from './AppText';
 
-const Card = ({title, subTitle, image, onPress}) => {
+const Card = ({title, subTitle, imageUrl, onPress}) => {
 	return (
 		<TouchableOpacity onPress={onPress} activeOpacity={0.8}>
 			<View style={styles.card}>
-				<Image source={image} style={styles.image} />
+				<Image source={{uri: imageUrl}} style={styles.image} />
 				<View style={styles.detailContainer}>
 					<AppText style={styles.title} numberOfLines={1}>
 						{title}
@@ -19,7 +19,7 @@ const Card = ({title, subTitle, image, onPress}) => {
 			</View>
 		</TouchableOpacity>
 	);
-}
+};
 
 export default Card
 
