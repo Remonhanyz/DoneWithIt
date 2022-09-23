@@ -5,12 +5,18 @@ import Card from "../components/Card";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
 import listingsApi from "../api/listings";
-
+import AppText from '../components/AppText'
+import AppButton from "../components/AppButton";
 const ListingsScreen = ({navigation}) => {
-	const [listings, setListings] = useState([]);
+	const [ listings, setListings ] = useState([]);
+	const [ error, setError ] = useState(false);
+	
 	const loadListings = async () => {
-		const response = listingsApi.getListings();
-		setListings(response.data);
+		const response = await listingsApi.getListings;
+		if(!response.ok) {
+			return setError(true)
+		}
+		setListings(await response.data);
 	};
 
 	useEffect(() => {
@@ -19,6 +25,12 @@ const ListingsScreen = ({navigation}) => {
 
 	return (
 		<SafeAreaView style={styles.container}>
+			{error && (
+				<>
+					<AppText>Couldn't retrieve the listings.</AppText>
+					<AppButton title="Try again" onPress={loadListings} />
+				</>
+			)}
 			<FlatList
 				data={listings}
 				keyExtractor={(listing) => listing.id.toString()}
