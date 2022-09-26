@@ -13,6 +13,7 @@ import {
 import FormImagePicker from "../components/forms/FormImagePicker";
 import useLocation from "../hooks/useLocation";
 import listingsApi from "../api/listings";
+import UploadScreen from "./UploadScreen";
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().min(1).label("Title"),
@@ -81,17 +82,37 @@ const categories = [
 
 function ListingEditScreen() {
 	const location = useLocation();
+	const [uploadVisible, setUploadVisible] = useState(false);
+	const [progress, setProgress] = useState(0);
+
 	const handleSubmit = async (listing) => {
-		const result = await listingsApi.addListing({ ...listing, location }, (progress) => {
-			
-		});
+		setUploadVisible(true);
+		console.log("done 1");
+		const result = await listingsApi.addListing(
+			{ ...listing, location }
+			,
+			(progress) => {
+				console.log("done 2");
+
+				// setTimeout(() =>, 100)
+				setProgress(progress)
+				console.log("done 3");
+			}
+		);
+		console.log("done 4");
+		setUploadVisible(false);
+		console.log("done 5");
+
 		if (!result.ok) {
 			return alert("couldn't save the listing.");
 		}
+		console.log("done 6");
+
 		alert("Success");
 	};
 	return (
 		<SafeAreaView style={styles.container}>
+			<UploadScreen progress={progress} visible={uploadVisible} />
 			<Form
 				initialValues={{
 					title: "",

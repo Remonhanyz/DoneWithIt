@@ -20,10 +20,10 @@ const ListingsScreen = ({navigation}) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			{getListingsApi.error && (
-				<>
+				<View style={{height: '100%'}}>
 					<AppText>Couldn't retrieve the listings.</AppText>
-					<AppButton title="Try again" onPress={loadListings} />
-				</>
+					<AppButton title="Try again" onPress={getListingsApi.request} />
+				</View>
 			)}
 			<ActivityIndicator visible={getListingsApi.loading} />
 			<FlatList
