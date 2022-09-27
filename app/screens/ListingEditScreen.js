@@ -86,33 +86,27 @@ function ListingEditScreen() {
 	const [progress, setProgress] = useState(0);
 
 	const handleSubmit = async (listing) => {
+		setProgress(0);
 		setUploadVisible(true);
-		console.log("done 1");
 		const result = await listingsApi.addListing(
-			{ ...listing, location }
-			,
+			{...listing, location},
 			(progress) => {
-				console.log("done 2");
-
-				// setTimeout(() =>, 100)
-				setProgress(progress)
-				console.log("done 3");
+				setProgress(progress);
 			}
 		);
-		console.log("done 4");
-		setUploadVisible(false);
-		console.log("done 5");
 
 		if (!result.ok) {
+			setUploadVisible(false);
 			return alert("couldn't save the listing.");
 		}
-		console.log("done 6");
-
-		alert("Success");
 	};
 	return (
 		<SafeAreaView style={styles.container}>
-			<UploadScreen progress={progress} visible={uploadVisible} />
+			<UploadScreen
+				onDone={() => setUploadVisible(false)}
+				progress={progress}
+				visible={uploadVisible}
+			/>
 			<Form
 				initialValues={{
 					title: "",
