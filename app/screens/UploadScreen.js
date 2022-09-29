@@ -19,7 +19,7 @@ const UploadScreen = ({progress = 0, visible = false, onDone}) => {
 					<AnimatedLottieView
 						autoPlay
 						loop={false}
-							source={require("../assets/animations/done.json")}
+						source={require("../assets/animations/done.json")}
 						style={styles.animation}
 						onAnimationFinish={onDone}
 					/>

@@ -1,13 +1,19 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import colors from '../config/colors';
-import AppText from './AppText';
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import React from "react";
+import colors from "../config/colors";
+import AppText from "./AppText";
+import {Image} from "react-native-expo-image-cache";
 
-const Card = ({title, subTitle, imageUrl, onPress}) => {
+const Card = ({title, subTitle, imageUrl, onPress, thumnailUrl}) => {
 	return (
 		<TouchableOpacity onPress={onPress} activeOpacity={0.8}>
 			<View style={styles.card}>
-				<Image source={{uri: imageUrl}} style={styles.image} />
+				<Image
+					uri={imageUrl}
+					tint="light"
+					preview={{uri: thumnailUrl}}
+					style={styles.image}
+				/>
 				<View style={styles.detailContainer}>
 					<AppText style={styles.title} numberOfLines={1}>
 						{title}
@@ -21,14 +27,14 @@ const Card = ({title, subTitle, imageUrl, onPress}) => {
 	);
 };
 
-export default Card
+export default Card;
 
 const styles = StyleSheet.create({
 	card: {
 		borderRadius: 15,
 		backgroundColor: colors.white,
-        marginBottom: 20,
-        overflow: 'hidden'
+		marginBottom: 20,
+		overflow: "hidden"
 	},
 	image: {
 		width: "100%",
@@ -37,11 +43,11 @@ const styles = StyleSheet.create({
 	detailContainer: {
 		padding: 20
 	},
-    title: {
-        marginBottom: 7
-    },
-    subTitle: {
-        color: colors.secondary,
-        fontWeight: 'bold'
-    }
+	title: {
+		marginBottom: 7
+	},
+	subTitle: {
+		color: colors.secondary,
+		fontWeight: "bold"
+	}
 });

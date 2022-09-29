@@ -20,7 +20,7 @@ const ListingsScreen = ({navigation}) => {
 	return (
 		<SafeAreaView style={styles.container}>
 			{getListingsApi.error && (
-				<View style={{height: '100%'}}>
+				<View style={{height: "100%"}}>
 					<AppText>Couldn't retrieve the listings.</AppText>
 					<AppButton title="Try again" onPress={getListingsApi.request} />
 				</View>
@@ -37,6 +37,7 @@ const ListingsScreen = ({navigation}) => {
 						onPress={() =>
 							navigation.navigate(routes.LISTING_DETAILS, item)
 						}
+						thumnailUrl={item.images[0].thumnailUrl}
 					/>
 				)}
 			/>
